@@ -1,0 +1,54 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+         body {background-color: rgb(37, 126, 167);}
+         div {background-color: rgb(119, 166, 236);}
+         h2 {background-color: rgb(121, 196, 240);}
+         h4 {background-color: rgb(121, 196, 240);}
+
+    </style>
+</head>
+<body>
+    <script>
+        $(document).ready(function () { //menentukan apa yang terjadi ketika kejadian siap terjadi.
+            $('#checkall').click(function () {  //lakukan ketika tombol kotak cek di klik/diceklis.   
+                $("input[type='checkbox']").attr('checked', $('#checkall').is(':checked'));  //menyetel atribut elemen yang dipilih, seperti mana saja yang diceklis.
+            });
+            $('form').find(':checkbox').click(function () {  //mengembalikan nilai elemen pertama dalam larik yang lulus pengujian, seperti mengembalikan nilai total dari perhitungan yang di ceklis, dapat berkurang dapat bertambah.
+                var amt = 0;
+                $('div').filter(':gt(0)').find(':checkbox').each(function () { //.filter=membuat larik yang diisi dengan semua elemen larik yang lulus pengujian, seperti menyaring hasilnya.
+                                                            //.each=menentukan fungsi yang akan dijalankan untuk setiap elemen yang cocok, seperti mengecek box yang diceklis atau tidak.
+                    if ($('div:gt(0)')) {
+                        if ($(this).is(':checked')) {   //memeriksa apakah salah satu elemen yang dipilih cocok dengan selectorElement, seperti mengecek harga mana saja yang di ceklis, jika diceklis maka akan true, jika tidak diceklis maka akan false.
+                            amt = amt + parseInt($(this).val());   //mengembalikan atau menyetel atribut nilai dari elemen yang dipilih, seperti menyetel harga total yang diceklis.
+                        }
+                    }
+                });
+                $('p').remove();   //menghapus elemen yang dipilih, seperti ketika membatalkan ceklis maka akan dihapus.
+                $('<p>').insertAfter('div:eq(7)');  //menyisipkan elemen HTML setelah elemen yang dipilih, seperti menampilkan mana saja yang diceklis.
+                $('p').text('Tagihan yang dibeli : Rp' + amt);   //menampilkan total harga yang diceklis.
+            });
+        }); 
+    </script>
+    
+    <form>
+        
+        <h2 class="text-center"> Zahrin Nurshofia Wardhani - 05211940000108 </h2>
+        <h4 class="text-center">Tagihan Item Buku</h4>
+
+
+    
+        <div class="infobox"><input type="checkbox" id="checkall">Semua Judul Buku</div>
+        <div class="infobox"><input type="checkbox" id="Selamat Tinggal" name="Selamat Tinggal" value=85000>Selamat Tinggal Rp 85000</div>
+        <div class="infobox"> <input type="checkbox" id="How to Stop Time" name="How to Stop Time" value=103500>How to Stop Time Rp 103500</div>
+        <div class="infobox"><input type="checkbox" id="Halo Mantan" name="Halo Mantan" value=99000>Halo Mantan Rp 99000</div>
+        <div class="infobox"><input type="checkbox" id="Negeri Daging" name="Negeri Daging" value=58000>Negeri Daging Rp 58000</div>
+        <div class="infobox"><input type="checkbox" id="Tempting" name="Tempting" value=156000>Tempting Rp 156000</div>
+        <div class="infobox"><input type="checkbox" id="Jungkir Balik Pers" name="Jungkir Balik Pers" value=63000>Jungkir Balik Pers Rp 63000</div>
+        <div class="infobox"><input type="checkbox" id="Ensiklopedia Akhlak Rasulullah" name="Ensiklopedia Akhlak Rasulullah" value=310000>Ensiklopedia Akhlak Rasulullah Rp 310000</div>
+
+    </form>
+</body>
+</html>
